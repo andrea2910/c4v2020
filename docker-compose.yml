@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  c4v:
+    image: c4v
+    build: .
+    ports:
+      - 3000:3000
