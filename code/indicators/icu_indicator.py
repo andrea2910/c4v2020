@@ -1,3 +1,5 @@
+import pandas as pd
+
 def icu_indicator(df,column, 
                     common_map = {'Todos los días': 1,
                                   'No operativa': -1,
