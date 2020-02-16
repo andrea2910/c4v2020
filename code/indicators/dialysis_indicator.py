@@ -1,10 +1,53 @@
 import pandas as pd
 
 def dialysis_indicator(df):
-    
     """
-    This function is done to help to make a decision to whether or not a 
-    dialysis is possible to be done at the hospital or not.
+    dialysis.py
+    ------------------
+    This Function calculates the dialysis indicator, a metric that measures
+    whether or not dialysis can be performed in the hospital in that particular state
+
+    Logic
+    -----
+    First, the function cleans the variables that is related to dialysis by imputing
+    missing values to 0 or converting necessary categorical columns to numerical values
+    Then it manually classifies the components required for a dialysis into 5 types and their indicator variables:
+    Materials ('materials_surgery'), staff ('staff_surgery'),
+    Reverse Osmosis unit operability ('flag_rrt_reverse_osmosis_unit_operability'),
+    hospital operability('flag_rrt_operability'), and
+    Number of Hemodialysis equipments operability('flag_rrrt_num_hemodialysis_equipments_operability').
+
+    Value:
+    1 would indicate the components required is fulfilled
+    0 would indicate there is at least one missing component
+    The following variables from the dataset will be classified into 'materials_surgery'
+        'rrt_hemodialysis_avail_filter',
+        'rrt_hemodialysis_avail_lines',
+        'rrt_hemodialysis_avail_kit_hemodialysis',
+        'rrt_hemodialysis_avail_iron',
+        'rrt_hemodialysis_avail_b_complex',
+        'rrt_hemodialysis_avail_calcium',
+        'rrt_hemodialysis_avail_zemblar',
+        'rrt_reverse_osmosis_unit_operability'
+    The following variables from the dataset will be classified into 'staff_surgery'
+        'rrt_staff_nephrology',
+        'rrt_staff_md',
+        'rrt_staff_resident',
+        'rrt_staff_nurse',
+        'rrt_staff_nurse_nephrologist'
+    Then a status indicator variable is created for these 5 types of data: ('XXXXX')
+    When all 5 of the indicator variables is met, it means that the dialysis can be done
+    Value of ('XXXXX'):
+    1 = dialysis can be performed
+    0 = dialysis cannot be performed
+
+    Input
+    -----
+    Pandas Dataframe
+
+    Output
+    ------
+    Pandas Series
     """
     
     dialysis = df.copy()

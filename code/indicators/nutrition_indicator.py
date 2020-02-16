@@ -1,36 +1,78 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 import pandas as pd
 
-def nutrition_indicator(df):
-    """
-    This function is creats a global nutrition indicator.
-    If a hospital has nutrition available, operable, and server 3 nurtionist approved 
-    meals a day everyday, nutrition indicator is 1
-    If a hospital does not have nutrition available or operable, does not serve any 
-    meals, nor have any nurtionist approved meals, nutrition indicator is -1
-    Else is 0
-    """
+def nutrition(df):
     
+    """
+    nutrition.py
+    ------------------
+    This Function calculates the nutrition indicator, a metric that measures 
+    a hospital's capability to fulfill nutritions for patients.
+
+    Logic
+    -----
+
+    The decision variable ('XXXXX') considers the status of 4 variables:
+
+    Nutrition Operability('nutr_operability'), 
+    Nutrition Num ('nutr_num'), 
+    Frequent Meal('nutr_daily_freq_meal'), 
+    Nutrition Quality('nutr_quality')
+
+
+    Because these variables are categorical, we convert it to numeric for ease of computation
+    'numeric_nutr_operability' 
+        1 = functional
+        0 = non-functional
+    'numeric_nutr_num' 
+        1 = Todos los días
+        0 = others 
+    'numeric_freq_meal' 
+        1 = Se sirve  3 comidas al día (desayuno, almuerzo y cena) 
+        0 = others
+    'numeric_nutr_quality' 
+        1 = Se siguen recomendaciones del especialista en cuanto al menú que se sirve
+        0 = others
+
+    The decision variable('XXXXX') has 3 values
+    1 = best nutrition capability    (more than 3 out of 4 status variables are 1)
+    0 = neutral nutrition capability (1 to 2 out of 4 status variables are 1)
+    -1 = bad nutrition capability     (0 out of 4 status variables are 1)
+
+    Input
+    -----
+    Pandas Dataframe
+
+    Output
+    ------
+    Pandas Series
+
+    """
     nutrition = df.copy()
     
     # Nutrition Available
     
     numeric = []
+
     for i in nutrition['nutr_avail']:
         if i == 'Sí':
             numeric.append(1)
         else:
-            numeric.append(-1)
+            numeric.append(0)
 
     nutrition['numeric_nutr_avail'] = pd.Series(numeric)   
     
     # Nutrition Operability
     
     numeric = []
+
     for i in nutrition['nutr_operability']:
         if i == 'Sí':
             numeric.append(1)
         else:
-            numeric.append(-1)
+            numeric.append(0)
 
     nutrition['numeric_nutr_operability'] = pd.Series(numeric)   
 
@@ -40,8 +82,6 @@ def nutrition_indicator(df):
     for i in nutrition['nutr_num']:
         if i == 'Todos los días':
             numeric.append(1)
-        elif i == 'Ningún día':
-            numeric.append(-1)
         else:
             numeric.append(0)
 
@@ -52,10 +92,10 @@ def nutrition_indicator(df):
     numeric = []
 
     for i in nutrition['nutr_daily_freq_meal']:
-        if i == 'Se sirven menos de 3 comidas al día':
-            numeric.append(0)
-        else:
+        if i == 'Se sirve  3 comidas al día (desayuno, almuerzo y cena)':
             numeric.append(1)
+        else:
+            numeric.append(0)
 
     nutrition['numeric_freq_meal'] = pd.Series(numeric)
     
@@ -63,10 +103,10 @@ def nutrition_indicator(df):
     numeric = []
 
     for i in nutrition['nutr_quality']:
-        if i == 'No se siguen recomendaciones del especialista en cuanto al menú que se sirve ':
-            numeric.append(-1)
-        else:
+        if i == 'Se siguen recomendaciones del especialista en cuanto al menú que se sirve':
             numeric.append(1)
+        else:
+            numeric.append(0)
 
     nutrition['numeric_nutr_quality'] = pd.Series(numeric)
     
@@ -86,17 +126,25 @@ def nutrition_indicator(df):
 
     nutrition['numeric_milk_formulas'] = pd.Series(numeric)
     
-    nutrition.loc[(nutrition['numeric_nutr_avail']==1) & 
-                  (nutrition['numeric_nutr_operability']==1) & 
-                  (nutrition['numeric_nutr_quality']==1) &
-                  (nutrition['numeric_nutr_num']==1) &
-                  (nutrition['numeric_freq_meal']==1),'nutrition_indicator'] = 1
     
-    nutrition.loc[(nutrition['numeric_nutr_avail']==-1) |
-                (nutrition['numeric_nutr_operability']==-1) |
-                (nutrition['numeric_nutr_num']==-1),'nutrition_indicator'] = -1
+    # Decision variable, 3-4 = good , 1-2 = medium, 0 = bad
+    
+    nutrition['temp'] = nutrition[['numeric_nutr_operability',
+                                 'numeric_nutr_num',
+                                 'numeric_freq_meal',
+                                 'numeric_nutr_quality']].sum(axis=1)
 
-    return nutrition['nutrition_indicator'] # , nutrition['numeric_milk_formulas']
+    good_nutrition = []
+
+    for i in nutrition['temp']:
+        if i >= 3 :
+            good_nutrition.append(1)
+        elif i == 0  :
+            good_nutrition.append(-1)
+        else:
+            good_nutrition.append(0)
+    
+    return pd.Series(good_nutrition)
 
 def disease_indicator(df):
     """

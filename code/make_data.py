@@ -1,14 +1,13 @@
-
 import sys
 import urllib.request
 import os
 from google.cloud import bigquery
 from code.indicators import *
+from config import CONFIG_JSON
+from datetime import datetime
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = CONFIG_JSON
 
-def load_data(url):
-    urllib.request.urlretrieve(url, './hult-hackathon-key.json')
-
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './hult-hackathon-key.json'
+def load_data():
 
     QUERY = ("""
     WITH all_data as (
@@ -108,10 +107,44 @@ def create_clean_df(df):
     cleaned_df.loc[:, 'med_supply_asthma'] = medical_supply_indicator.medical_supply_indicator(df, 'er_avail_asthma')
     cleaned_df.loc[:, 'med_supply_insulin'] = medical_supply_indicator.medical_supply_indicator(df, 'er_avail_insulin')
     cleaned_df.loc[:, 'med_supply_lidocaine'] = medical_supply_indicator.medical_supply_indicator(df, 'er_avail_lidocaine')
+    cleaned_df.loc[:, '_PARTITIONTIME'] = datetime.today().date()
     
     cleaned_df.loc[:, new_cols] = cleaned_df.loc[:, new_cols].astype(int)
 
-    cleaned_df = cleaned_df.loc[:, keep_cols + new_cols]
+    cleaned_df = cleaned_df.loc[:, keep_cols + new_cols + ['_PARTITIONTIME']]
 
     return(cleaned_df)
 
+def create_bq_table(df, dataset="hulthack"):
+    client = bigquery.Client()
+    dataset_ref = client.dataset(dataset)
+
+    table_ref = dataset_ref.table("indicators-dash")
+    schema = list()
+    
+    for column in df.columns:
+        if column == "_PARTITIONTIME":
+            schema.append(bigquery.SchemaField("_PARTITIONTIME", "DATE"))
+        elif column in []:
+            schema.append(bigquery.SchemaField(column, "STRING"))
+        else:
+            bigquery.SchemaField(column, "INT64"),
+        
+    
+    table = bigquery.Table(table_ref, schema=schema)
+    table.time_partitioning = bigquery.TimePartitioning(
+        type_=bigquery.TimePartitioningType.DAY,
+        field="_PARTITIONTIME",  # name of column to use for partitioning
+    )
+
+    table = client.create_table(table)
+
+    print(
+        "Created table {}, partitioned on column {}".format(
+            table.table_id, table.time_partitioning.field
+        )
+    )
+
+def upload_clean_df(df, dataset="hulthack"):
+    client = bigquery.Client()
+    dataset_ref = client.dataset(dataset)

@@ -40,5 +40,5 @@
 
 	// Add the IDs of extensions you want installed when the container is created in the array below.
 	"extensions": [],
-	"appPort": ["0:8888"]
+	"appPort": ["0:3000"]
 }
