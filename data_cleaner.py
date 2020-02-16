@@ -7,23 +7,14 @@ import os
 import sys
 
 import argparse
-from google.cloud import bigquery
-import urllib.request
+from load_data.load_most_recent_data import load_data
 
 def main(args):
     ### Load Data Key
-    urllib.request.urlretrieve(args.key_url, './hult-hackathon-key.json')
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './hult-hackathon-key.json'
-
-    ### Get Data from Big Query Client
-    client = bigquery.Client()
-    query = ('select * from `angostura_dev`.eh_health_survey_response')
-    df = client.query(query).to_dataframe() 
-    print("")
+    df = load_data(args.url)
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description="")
-	parser.add_argument("key_url", help="", action='store', 
-                        default='https://storage.googleapis.com/angostura-public/hult-hackathon-key.json')
+	parser.add_argument("key_url", help="", action='store')
 	argv = parser.parse_args()
 	sys.exit(main(args=argv))
