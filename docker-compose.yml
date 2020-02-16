@@ -4,5 +4,5 @@ services:
   c4v:
     image: c4v
     build: .
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 8000:8000
