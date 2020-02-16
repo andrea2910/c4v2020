@@ -1,15 +1,9 @@
 # C4V Hackathon
 
+We leverage Bigquery to pull data from the `angostura_dev.eh_health_survey_response` and insert it into our own table `event-pipeline.hulthack.dashboard_v1`. This data will go into a Tableau dashboard. The code is automated and any user can run the following function `code/make_data.py` daily. There are no parameters needed in this code (however, the read/write permissions may need to be changed).
+
 To load the notebooks, type `jupyter lab --no-browser --port=3000` locally.
 
-Get dashboard to work....
-To set up dashboard directly run the file `setup.sh` and you can go to localhost:8050
-
-Code to run load_data
-```
-from load_data.load_most_recent_data import load_data
-df = load_data()
-```
 _Assumptions_
 Data quality errors: The column `wahs_failure_sx` is mispelt, and currently the data does not match this. Similarly the columns have differing definitions for not existing/not available ('No operativa', 'No existe', 'No hubo','Nunca ha existido')
 

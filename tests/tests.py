@@ -1,9 +1,12 @@
-from config import URL
-from code.make_data import load_data, create_clean_df
+from code.make_data import load_data, create_clean_df, create_bq_table, upload_clean_df
 from code.indicators import *
+from google.cloud import bigquery
+import os 
+from config import CONFIG_JSON
 
 if __name__ == "__main__":
-    df = load_data(URL)
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = CONFIG_JSON
+    df = load_data()
     print(len(df))
 
     ## test specific indicators
@@ -12,3 +15,19 @@ if __name__ == "__main__":
 
     new_df = create_clean_df(df)
     print(new_df.head())
+
+    #create_bq_table(new_df)
+    # from datetime import datetime, timedelta
+    # new_df['insert_date'] = (datetime.today() - timedelta(days=1)).date()
+    # upload_clean_df(new_df)
+
+    client = bigquery.Client()
+    sql = """
+    DECLARE max_date DATE;
+    SET max_date = (
+    SELECT MAX(insert_date) FROM `hulthack.dashboard_v1`);
+    SELECT *
+    FROM `hulthack.dashboard_v1`
+    WHERE insert_date = max_date
+    """
+    assert len(df) == len(client.query(sql).to_dataframe()), 'mismatch type'
