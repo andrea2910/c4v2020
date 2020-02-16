@@ -6,8 +6,8 @@ import pandas as pd
 def nutrition(df):
     
     """
-    nutrition.py
-    ------------------
+    nutrition
+    ---------
     This Function calculates the nutrition indicator, a metric that measures 
     a hospital's capability to fulfill nutritions for patients.
 

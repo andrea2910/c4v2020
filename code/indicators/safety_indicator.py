@@ -6,11 +6,25 @@ def white_space_filler(df, column):
 
 def safety_indicator(df):
     '''
-    Logic:
+    safety_indicator.py
+    ------------------
+    This Function calculates the surgery indicator, a metric that measures
+    whether or not there are protests or violence in the hospital in that particular state
+​
+    Logic
+    ----- 
     If there is violence towards hospital, then -1
     If there is protest towards hospital, then 0
     If there is no violence or protest, then 1 
     Else maybe
+​
+    Input
+    -----
+    Pandas Dataframe
+​
+    Output
+    ------
+    Pandas Series
     '''
     protest_violence = ['strike_medical_staff_affected',
                     'strike_nurses_affected',

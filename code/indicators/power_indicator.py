@@ -5,9 +5,23 @@ def is_available(df, column, map_dict):
     
 def power_indicator(df):
     """
+    power_indicator
+    ---------------
+    The function caluates the reliablity of power at a hospital.
+
+    Logic
+    -----
     If there are no power outages, a generator avaiable, and they have power all days, then 1
     If there are power outages and (there is no generator or the hospital has less than 3 days of power), then -1
     Else 0
+
+    Input
+    -----
+    Pandas Dataframe
+
+    Output
+    ------
+    Pandas Series
     """
     tmp = df.copy()
     ### Maps to Scores
@@ -29,10 +43,24 @@ def power_indicator(df):
     
 def machine_indicator(df):
     """
+    machine_indicator
+    -----------------
+    The function caluates the reliablity of medical equipment of a hospital.
+
+    Logic
+    -----
     If Hospitals has no equipment failures due to power outage and all medical equipment, then 1
     If Hopsitals have equipment failures due to power outage or missing two of three medical equipment,
     then -1
     Else 0
+
+    Input
+    -----
+    Pandas Dataframe
+
+    Output
+    ------
+    Pandas Series
     """
     tmp = df.copy()
     ### Maps to Scores

@@ -2,13 +2,27 @@ import pandas as pd
 
 def surgery_indicator(df):
     '''
-    Logic: 
+    surgery_indicator.py
+    ------------------
+    This Function calculates the surgery indicator, a metric that measures
+    whether or not surgeries can be performed in the hospital in that particular state
+​
+    Logic
+    ----- 
     If op_pavilions_count = 0 then cannot do surgery
     If op_pavilions_count > 0 and 
     sx_avail_anesthetics_iv, sx_avail_anesthetic_gases, 
     sx_avail_ott_intubation,sx_avail_oxygen_suction DOESNT WORK, then cannot do
     If op_pavilions_count > 0 and sx_avail_anesthetics_iv, sx_avail_anesthetic_gases, 
     sx_avail_ott_intubation,sx_avail_oxygen_suction ALWAYS works, then can always do
+​
+    Input
+    -----
+    Pandas Dataframe
+​
+    Output
+    ------
+    Pandas Series
     '''
     tmp = df.copy()
     tmp['sx_indicator'] = 0

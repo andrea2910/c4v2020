@@ -1,7 +1,90 @@
 import pandas as pd 
 
 def er_indicator(df):
-    
+    """
+    er_indicator.py
+    ------------------
+    This Function calculates the ER indicator, a metric that measures the 
+    realiability of the Emergency Room.
+​
+​
+    Logic
+    -----
+    1.- From the input DataFrame, it subsets all the columns referred to the 
+    Emergency Room in a DataFrame called 'er_df'.
+​
+    2.- For the variables referred to the ER supplies (e.g adrenalin, insulin), 
+    which comes originally in a Likert scale, it converts them to -1, 0 or 1 
+    and stores them in a new column ending with '_scaled' following the logic:
+​
+        Value == -1 (Bad condition) when:
+        ---------------------------------
+        'No hubo'
+        'Nunca ha existido'
+        'No hubo agua ningún dia'
+        '< 3 días, sin soporte alterno (cisternas)'
+​
+        Value == 1 (Good condition) when:
+        ---------------------------------
+        'Todos los días'
+        'Hubo agua todos los días'
+        '3 a 5 días, con soporte alterno' 
+​
+        Value == 0 (Medium condition) when:
+        ----------------------------------
+        <otherwhise>
+​
+    3.- For the variables referred to the ER staff (e.g specialists, mic...), 
+    which comes originally as natural numers, it converts them to 0 or 1
+    and stores them in a new column ending with '_scaled' following the logic:
+​
+        Value == 0 (Bad condition) when:
+        ---------------------------------
+        The variable has the value 0 (no staff present)
+​
+        Value == 1 (Good condition) when:
+        ---------------------------------
+        The variables has more than 0 (some staff present)
+​
+    4.- Sum the values in the _scaled columns by hospital and gives a total score 
+    for supplies and staff. 
+​
+    5.- Generates the new preliminary columns following the same logic:
+​
+        Score for supplies
+        ------------------
+        More or equal to 10 : Value = 1 
+        Less than 1: Value = -1
+        Otherwise: Value = 0 
+​
+        Score for staff
+        ------------------
+        More or equal to 8 : Value = 1 
+        Less than 5: Value = -1
+        Otherwise: Value = 0 
+​
+        Score for critical staff (excluding non proffesionals)
+        ------------------
+        More or equal to 7 : Value = 1 
+        Less than 5: Value = -1
+        Otherwise: Value = 0 
+​
+    6.- Generates a final value for each hospital 1 or 0. If the hospital has 
+    three values of 1 in supplies, staff and critical staff, then value = 1, 
+    otherwhise 0.
+​
+​
+    Input
+    -----
+    Pandas Dataframe
+    Output
+    ------
+    Pandas Series
+​
+​
+​
+    """    
+
     df_er = df.copy()
     
     ### Defining the columns for the ER 
