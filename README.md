@@ -5,6 +5,11 @@ To load the notebooks, type `jupyter lab --no-browser --port=3000` locally.
 Get dashboard to work....
 To set up dashboard directly run the file `setup.sh` and you can go to localhost:8050
 
+Code to run load_data
+```
+from load_data.load_most_recent_data import load_data
+df = load_data()
+```
 _Assumptions_
 Data quality errors: The column `wahs_failure_sx` is mispelt, and currently the data does not match this. Similarly the columns have differing definitions for not existing/not available ('No operativa', 'No existe', 'No hubo','Nunca ha existido')
 
