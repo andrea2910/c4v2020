@@ -4,8 +4,7 @@ import urllib.request
 import os
 from google.cloud import bigquery
 
-def load_data():
-    url = 'https://storage.googleapis.com/angostura-public/hult-hackathon-key.json'
+def load_data(url):
     urllib.request.urlretrieve(url, './hult-hackathon-key.json')
 
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './hult-hackathon-key.json'
