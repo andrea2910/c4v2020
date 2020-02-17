@@ -2,6 +2,8 @@
 
 We leverage Bigquery to pull data from the `angostura_dev.eh_health_survey_response` and insert it into our own table `event-pipeline.hulthack.dashboard_v1`. This data will go into a Tableau dashboard. The code is automated and any user can run the following function `code/make_data.py` daily. There are no parameters needed in this code (however, the read/write permissions may need to be changed).
 
+For the sample dashboard, you can run the code `sh setup.sh`.
+
 To load the notebooks, type `jupyter lab --no-browser --port=3000` locally.
 
 _Assumptions_
