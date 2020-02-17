@@ -1,8 +1,8 @@
-# C4V Hackathon
+# C4V Hackathon - Born in Venezuela
 
 Our project addresses the question: `can I go to my local hospital for xyz?`. We created a process that takes the survey data and answers that question for 17 types of cases. We also created telegram bot that allows individuals to text and receive information about their local hospitals (details below).
 
-We leverage Bigquery to pull data from the `angostura_dev.eh_health_survey_response` and insert it into our own table `event-pipeline.hulthack.dashboard_v1`. This data went into Tableau dashboard (attached). The code is automated and any user can run the following function `code/make_data.py` daily. There are no parameters needed in this code (however, the read/write permissions may need to be changed).
+We leverage Bigquery to pull data from the `angostura_dev.eh_health_survey_response` and insert it into our own table `event-pipeline.hulthack.dashboard_v1`. This data went into Tableau dashboard in the folder `tableau_sample/`. The code is automated and any user can run the following function `code/make_data.py` daily. There are no parameters needed in this code (however, the read/write permissions may need to be changed).
 
 For the sample dashboard, you can run the code `sh setup.sh`. We use dash to create a sample dashboard but the interactivity does not work and the text must be mapped to colors/unicode text. 
 
