@@ -44,14 +44,14 @@ def bot():
         #print(message)
         location = message.text
         client = bigquery.Client()
-        sql = “”"
+        sql =  """
         DECLARE max_date DATE;
         SET max_date = (
         SELECT MAX(insert_date) FROM `hulthack.dashboard_v1`);
         SELECT *
         FROM `hulthack.dashboard_v1`
         WHERE insert_date = max_date and federal_entity = '{}'
-        “”".format(location)
+        """.format(location)
         df = client.query(sql).to_dataframe()
         df = df.replace(to_replace='-1.0', value='Mal', regex=True)
         df = df.replace(to_replace='1.0', value='Bien', regex=True)
