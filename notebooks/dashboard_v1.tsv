@@ -1,0 +1,35 @@
+report_week	Hospital	federal_entity	power	water	safety	surgery	er_avail_general	icu	icu_p	pregnancy	dialysis	machine	med_supply_asthma	med_supply_insulin	med_supply_lidocaine	er_staff_general	er_staff_critical	disease	insert_date
+5 del 2020	Hospital Dr. Luis Razetti. Delta Amacuro	Delta Amacuro	0	0	1	1	0	-1.0	-1.0	0	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+4 del 2020	Hospital Universitario Dr. Manuel Núñez Tovar. Monagas	Monagas	0	0	-1	1	-1	1.0	1.0	0	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+7 del 2020	Hospital Dr. Miguel Oraa. Portuguesa	Portuguesa	0	0	-1	0	-1	0.0	-1.0	0	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+32 del 2019	Hospital Universitario de Maracaibo. Zulia	Zulia	0	0	-1	0	-1	1.0	1.0	0	1	0	0.0	0.0	0.0	1	0	0	2020-02-15
+5 del 2020	Hospital Dr. José Gregorio Hernández. Amazonas	Amazonas	0	0	-1	0	-1	1.0	-1.0	-1	-1	0	0.0	0.0	0.0	1	1	-1	2020-02-15
+7 del 2020	Hospital Universitario Dr. Luis Razzetti. Anzoátegui	Anzoátegui	0	1	-1	0	0	1.0	1.0	-1	-1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+7 del 2020	Hospital Dr. Luis Razetti. Barinas	Barinas	0	0	-1	0	0	1.0	1.0	-1	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+1 del 2020	Hospital Ruiz y Páez. Bolívar	Bolívar	0	0	1	0	-1	1.0	1.0	-1	-1	-1	0.0	0.0	0.0	0	1	0	2020-02-15
+6 del 2020	Hospital Dr. Ángel Larrralde. Carabobo	Carabobo	0	0	1	0	-1	-1.0	-1.0	-1	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+7 del 2020	Ciudad Hospitalaria Enrique Tejera. Carabobo	Carabobo	0	-1	1	0	-1	-1.0	-1.0	-1	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+6 del 2020	Hospital Militar. Dtto. Capital	Dtto Capital	0	1	1	0	0	1.0	1.0	-1	-1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+31 del 2019	Hospital Universitario Dr. Antonio María Pineda. Lara	Lara	0	1	1	1	0	1.0	-1.0	-1	1	-1	0.0	1.0	0.0	1	1	0	2020-02-15
+5 del 2020	Hospital Domingo Luciani. Miranda	Dtto Capital	0	0	1	1	0	1.0	1.0	-1	1	-1	0.0	0.0	0.0	1	1	-1	2020-02-15
+45 del 2019	Hospital General Dr. Victorino Santaella	Dtto Capital	0	0	1	0	0	1.0	1.0	-1	1	-1	0.0	0.0	0.0	1	1	0	2020-02-15
+5 del 2020	Hospital Dr. Luis Ortega. Nueva Esparta	Nueva Esparta	0	1	-1	1	-1	0.0	1.0	-1	1	-1	0.0	0.0	0.0	1	0	1	2020-02-15
+6 del 2020	Hospital Antonio Patricio de Alcalá. Sucre	Sucre	0	0	1	1	1	1.0	-1.0	-1	1	-1	0.0	1.0	0.0	1	1	-1	2020-02-15
+5 del 2020	Hospital Dr. José María Vargas. Vargas	Vargas	0	0	0	1	1	-1.0	-1.0	-1	1	-1	0.0	1.0	0.0	1	1	-1	2020-02-15
+7 del 2020	Hospital General del Sur	Zulia	0	0	1	0	0	-1.0	-1.0	-1	-1	-1	0.0	0.0	0.0	1	0	-1	2020-02-15
+4 del 2020	Hospital Coronel Elbano Paredes Vivas. Aragua	Aragua	0	0	1	0	0	1.0	-1.0	0	-1	-1	0.0	0.0	1.0	1	0	1	2020-02-15
+6 del 2020	Hospital Uyapar. Bolívar	Bolívar	0	0	-1	1	0	-1.0	-1.0	0	-1	-1	0.0	0.0	1.0	1	0	-1	2020-02-15
+6 del 2020	Hospital Vargas. Dtto. Capital	Dtto Capital	0	0	1	0	1	0.0	-1.0	0	-1	-1	1.0	1.0	1.0	1	1	-1	2020-02-15
+6 del 2020	Hospital Universitario de Caracas. Dtto. Capital	Dtto Capital	0	0	-1	0	1	1.0	1.0	0	-1	-1	1.0	0.0	1.0	1	1	-1	2020-02-15
+5 del 2020	nan	Dtto Capital	0	0	1	1	1	-1.0	-1.0	0	-1	-1	1.0	0.0	1.0	0	0	1	2020-02-15
+5 del 2020	Hospital Universitario de los Andes. Mérida	Mérida	0	1	-1	1	0	1.0	1.0	0	1	-1	0.0	0.0	1.0	1	1	-1	2020-02-15
+7 del 2020	Hospital Dr. Pablo Acosta Ortiz. Apure	Apure	0	0	-1	0	1	0.0	0.0	-1	1	-1	0.0	0.0	1.0	1	1	-1	2020-02-15
+6 del 2020	Hospital Central de Maracay. Aragua	Aragua	0	1	-1	1	1	1.0	1.0	-1	1	-1	0.0	1.0	1.0	1	1	-1	2020-02-15
+6 del 2020	Hospital JM de los Ríos. Dtto. Capital	Dtto Capital	0	0	-1	1	1	-1.0	1.0	-1	1	-1	0.0	1.0	1.0	1	0	-1	2020-02-15
+7 del 2020	Maternidad Concepción Palacios. Dtto. Capital	Dtto Capital	0	0	-1	1	-1	1.0	1.0	-1	-1	-1	0.0	0.0	1.0	0	0	-1	2020-02-15
+5 del 2020	Hospital Dr. Miguel Pérez Carreño. Dtto. Capital	Dtto Capital	1	0	-1	1	0	1.0	1.0	-1	-1	-1	-1.0	-1.0	1.0	1	0	-1	2020-02-15
+6 del 2020	Hospital Magallanes de Catia. Dtto. Capital	Dtto Capital	0	0	-1	1	1	-1.0	-1.0	-1	-1	-1	1.0	1.0	1.0	0	0	-1	2020-02-15
+5 del 2020	Hospital Dr. Alfredo Van Grieken. Falcón	Falcón	0	1	-1	1	1	1.0	1.0	-1	1	-1	0.0	0.0	1.0	1	0	-1	2020-02-15
+7 del 2020	Hospital Dr. Israel Ranuarez Balza. Guárico	Guárico	0	0	-1	1	1	1.0	1.0	-1	1	-1	1.0	1.0	1.0	1	1	-1	2020-02-15
+6 del 2020	Hospital Patrocinio Peñuela. Táchira	Táchira	0	0	1	-1	0	1.0	1.0	-1	1	-1	0.0	0.0	1.0	1	0	-1	2020-02-15
+6 del 2020	Hospital Central de San Cristóbal. Táchira	Táchira	0	0	1	1	0	1.0	1.0	-1	1	-1	0.0	0.0	1.0	1	1	-1	2020-02-15

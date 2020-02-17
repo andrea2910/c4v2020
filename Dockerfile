@@ -8,6 +8,7 @@ FROM jupyter/scipy-notebook
 # If you prefer miniconda:
 #FROM continuumio/miniconda3
 
+USER root
 LABEL Name=c4v Version=0.0.1
 EXPOSE 3000
 
@@ -25,10 +26,13 @@ ADD . /app
 
 # Using pip:
 RUN python3 -m pip install -r requirements.txt
+RUN sudo chown -R $NB_UID /app
 
+USER $NB_UID
 #RUN jupyter lab --no-browser --port=3000 --allow-root
 #CMD ["python3", "-m", "c4v"]
 
+CMD ["python", "dash_app/app.py"]
 # Using pipenv:
 #RUN python3 -m pip install pipenv
 #RUN pipenv install --ignore-pipfile
